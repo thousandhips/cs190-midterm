@@ -19,14 +19,14 @@ class ViewController: UIViewController {
         counterLabel!.text = "\(counter)"
     }
     
-    // This is the method that the + button fires.
+    // This is the method that the increment button fires.
     @IBAction func incrementCounter(sender: UIButton) {
         counter += 1
         setLabel()
     }
     
-    // You are going to need another method that the - button fires.
-    // Something like:
+    // You are going to need another method that the decrement button fires.
+    // It will start out something like:
     // @IBAction func decrementCounter ...
 
     override func viewDidLoad() {
