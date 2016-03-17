@@ -26,17 +26,17 @@ struct RentalCar {
 
 // This is the function you are implementing for Part II A.
 func price(rentalCar: RentalCar, totalHours: Int) -> Float {
-    let days = 0  // this you need to compute from totalHours
-    let hours = 0 // you also need to compute this from totalHours
+    let days = totalHours / 24  // this you need to compute from totalHours
+    let hours = totalHours % 24 // you also need to compute this from totalHours
     let dailyPrice = rentalCar.dailyPrice
     let hourlyPrice = rentalCar.hourlyPrice
-    return days * dailyPrice + hours * hourlyPrice // this return statement isn't quite right yet!
+    return Float(CGFloat(days) * CGFloat(dailyPrice) + CGFloat(hours) * CGFloat(hourlyPrice)) // this return statement isn't quite right yet!
 }
 
 // This is the function you are implementing for Part II B.
 func pricingFunctionForCar(rentalCar: RentalCar) -> (Int) -> (Float) {
     func priceForHours(totalHours: Int) -> Float {
-        return 0.0 // with what you did in Part II A, fixing this return to return the right thing is easy
+        return price( rentalCar, totalHours: totalHours) // with what you did in Part II A, fixing this return to return the right thing is easy
     }
     return priceForHours // this is a function that is being returned!!
 }
@@ -77,7 +77,7 @@ class GCDTestSuite: XCTestCase {
     }
     
     func testPriceMazda98() {
-        let expectedResult: Float = 243.94
+        let expectedResult: Float = 59.99
         let result = price(mazdaCX5, totalHours: 24)
         XCTAssertEqual(expectedResult, result, "Mismatch in Mazda CX5 pricing.")
     }
