@@ -29,23 +29,26 @@ let allFleet = [teslaP85, mazdaCX5, hondaCRX]
 // Part III A.
 // When you are done implementing this function, testIsAutomaticTrue and testIsAutomaticFalse will pass.
 func isAutomatic(rentalCar: RentalCar) -> Bool {
-    return true
+    return rentalCar.automatic
 }
 
 // Part III B.
 // When you have corrected the following line it will use filter and the isAutomatic function to return just the automatic cars.
-let automaticOnly = allFleet
+let automaticOnly = allFleet.filter(){ value in value.automatic}
+
 
 // Part III C.
 // When you are done implementing this function, testAutomaticCounter will pass.
 func automaticCounter(rentalCar: RentalCar) -> Int {
-    return 0
+    if( rentalCar.automatic){ return 1}
+    else {return 0}
 }
+
 
 // Part III D.
 // When you have corrected the following line, testCountAutomatic will pass.
 // HINT: There is only one tiny mistake to fix.
-let countAutomatic = allFleet.reduce(1, combine: { $0 + automaticCounter($1)} )
+let countAutomatic = allFleet.reduce(0, combine: { $0 + automaticCounter($1)} )
 
 /*:
 ## Unit Tests
